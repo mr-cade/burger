@@ -1,28 +1,45 @@
 <div class="container">
-<div class="jumbotron">
-    <h1 class="display-3">Burgers are Life</h1>
-    <p class="lead">A burger a day keeps the doctor away.</p>
-    <hr class="my-2">
-    <p>Create any burger and devour it!</p>
-    <p class="lead">
-        <a class="btn btn-primary btn-lg" href="Jumbo action link" role="button">Create a burger!</a>
-    </p>
-</div>
-
-<div class="card col-6">
-    <img class="card-img-top" src="https://assets3.thrillist.com/v1/image/2709963/792x1500/scale;jpeg_quality=60;progressive.jpg" alt="Burger image needed">
-    <div class="card-body=">
-        <h4 class="card-title">Burgers</h4>
+    <div class="jumbotron">
+        <h1 class="display-3">Burgers are Life</h1>
+        <p class="lead">A burger a day keeps the doctor away.</p>
+        <hr class="my-2">
+        <img class="card-img-top" src="https://assets3.thrillist.com/v1/image/2709963/792x1500/scale;jpeg_quality=60;progressive.jpg" alt="Burger">
+        <p>Create any burger and devour it!</p>
     </div>
-    <ul class="list-group list-group-flush">
-        
-        {{!-- figure out loop -- where do I put "burgers"? --}}
-        {{#each burger}}
-            <li class="list-group-item">{{{burger_name}}}</li>
-                <button type="button" class="btn btn-primary btn-md col-3 float-right">Devour!</button>
-        {{/each}}
+    <div class="row">
+		<div class="col-md-5 text-center enter_section">
+			<form action="/burgers/create" method="POST">
+				<input type="text" class="form-control" name="burger_name" value="" id="enter_text">
+				<button type="submit" class="btn btn-primary" id="text-enter-button">Submit</button>
+			</form>
+			<p>Enter a burger you want to eat!</p>
+		</div>
+	</div>
+    <div class="row">
+        <div class="card col-6">
+            <div class="card-body=">
+                <h4 class="card-title">Burgers</h4>
+            </div>
+            <ul class="list-group list-group-flush">
+                {{#each burger}}
+                    <li class="list-group-item">{{{burger_name}}}</li>
+                        <button type="button" class="btn btn-primary btn-md col-3 float-right">Devour!</button>
+                {{/each}}
 
-    </ul>
-</div>
+            </ul>
+        </div>
 
+        <div class="card col-6">
+            <div class="card-body=">
+                <h4 class="card-title">Devoured Burgers</h4>
+            </div>
+            <ul class="list-group list-group-flush">
+                {{#each burger}}
+                    {{#if this.devoured}}
+                        <li class="list-group-item">{{{burger_name}}}</li>
+                    {{/if}}
+                {{/each}}
+            </ul>
+        </div>
+    </div>
 </div>
