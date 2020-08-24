@@ -1,5 +1,8 @@
 var connection = require("./connection.js");
 
+
+
+
 var orm = {
     selectAll: function(table, callback) {
         var queryString = "SELECT * FROM " + table + ";";

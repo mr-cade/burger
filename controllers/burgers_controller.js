@@ -9,7 +9,9 @@ router.get("/", function(req, res){
 });
 
 router.get("/burgers", function(req, res){
-    res.render('index')
+    burger.all(function(burgerData) {
+        res.render('index', {burger: burgerData});
+    })
 });
 
 router.post("/burgers/create", function(req, res) {
